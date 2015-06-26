@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block page_content %}
+<div class="row">
+    <div class="col-md-7 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-body post-body">
+                <em>Tự động cập nhật</em>: {{ update }}
+            </div>
+        </div>
+
+        {% for n in news %}
+        <div class="panel panel-info">
+        <div class="panel-heading">
+            {{ n.keywords }}
+        </div>
+        <div class="list-group">
+            {% for a in n.articles %}
+                <a href="{{ a[1] }}" target="_blank" class="list-group-item">{{ a[0] | safe }}</a>
+            {% endfor %}
+        </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="col-md-2">
+        <div class="panel panel-default">
+        <div class="panel-heading">
+            từ khóa, nóng
+        </div>
+            <div class="panel-body post-body">
+                {{ hot }}
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+        <div class="panel-heading">
+            nguồn cấp, rss
+        </div>
+        <div class="list-group">
+            <a href="http://vnexpress.net/rss" class="list-group-item">vnexpress.net</a>
+            <a href="http://vietnamnet.vn/vn/rss/" class="list-group-item">vietnamnet.vn</a>
+            <a href="http://laodong.com.vn/rss" class="list-group-item">laodong.com.vn</a>
+        </div>
+        </div>
+    </div>
+
+
+</div>
+{% endblock %}
+
+
+
